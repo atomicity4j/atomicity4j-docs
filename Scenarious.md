@@ -19,5 +19,4 @@ sequenceDiagram
   Frontend->>Client: Response
   deactivate Frontend
 
-
 - Each `Frotnend` has its own `Response Queue`
