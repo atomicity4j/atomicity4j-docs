@@ -31,17 +31,35 @@ sequenceDiagram
   - Upload big data attachment
   - Download big data
 
+# Balancer
+
+Balance incoming traffik to frontends
+
+Service which uses a tool like `traefik` or `nginx`
+
+# Frotnend
+
+Save request to a queue
+
+- Use request fields to find a queue
+
+# Requests Queue
+
+Keep requests
+
+- Request is deleted after it is processed
+
 # Request Handler
 
-Purpose:
+Handle requests using `eventual atomicity` approach
 
 - Check and reject Requests (say no permissions to perfom given operation)
-- Update States
-- Feed `Transcation Log`
+- Update object states
+- Feed `Transaction Log`
 
 # States Db
 
-Purpose: provide `eventual atomicity`
+Persistency to provide `eventual atomicity`
 
 - Each request can modify one or few states
 - Eventually all modifications must be either applied or compensated
@@ -53,10 +71,12 @@ Design details:
 - State is `shared` (`разделяемое состояние`) if few transactions can be applied. Shared states must keep list of all applied transactions
 
 Example: customer must have unique email 
+
 - Two states are needed to handle this requirement
 - `Customer Email` is a dedicated  state, has an `email` as a key and `Customer.id` as a value
 - `Customer Data` is a shared state, has `customer.id` as a key and customer fields as a value
 - `Create Customer` reqest  first try to create  `Customer Email` state, if ok, `Customer Data` is created
+- `Update Customer` request first try to create  `Customer Email` state for a new email value, then update `Customer Data` state and finally deactivate previous `Customer Email`
 
 # Transaction Log
 
