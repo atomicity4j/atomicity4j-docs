@@ -31,9 +31,17 @@ sequenceDiagram
   - Upload big data attachment
   - Download big data
 
+# Request Handler
+
+Purpose:
+
+- Check and reject Requests (say no permissions to perfom given operation)
+- Update States
+- Feed `Transcation Log`
+
 # States Db
 
-Why we need `States Db`? To provide `eventual atomicity`.
+Purpose: provide `eventual atomicity`
 
 - Each request can modify one or few states
 - Eventually all modifications must be either applied or compensated
@@ -41,8 +49,8 @@ Why we need `States Db`? To provide `eventual atomicity`.
 Design details:
 
 - Each state has a key
-- State is a `dedicated` (`выделенное`) if only one transaction can own the state
-- State is `shared` (`разделяемое`) if few transactions can be applied. Shared states must keep list of all applied transactions
+- State is a `dedicated` (`выделенное состояние`) if only one transaction can own the state
+- State is `shared` (`разделяемое состояние`) if few transactions can be applied. Shared states must keep list of all applied transactions
 
 Example: customer must have unique email 
 - Two states are needed to handle this requirement
@@ -50,7 +58,15 @@ Example: customer must have unique email
 - `Customer Data` is a shared state, has `customer.id` as a key and customer fields as a value
 - `Create Customer` reqest  first try to create  `Customer Email` state, if ok, `Customer Data` is created
 
+# Transaction Log
+
+Purpose: 
+- Keep processed transactions (both, "commited" and "rejected")
+- Effective rescan of processed transaction
+
+`Requests Queue`, `States Db` and `Transaction Log` can be implemented as a single database table for the price of perfomace and scalability.
+
 # Special Scenarious
 
 - Sync logs
-- The prpoerties
+- 
