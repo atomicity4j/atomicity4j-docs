@@ -30,19 +30,21 @@ sequenceDiagram
   - Upload big data attachment
   - Download big data
 
-
-  
 # States Db
 
 Why we need `States Db`? To provide `eventual atomicity`.
 
 - Each request can modify one or few states
+- Eventually all modifications must be either applied or compensated
+
+Design details:
+
 - Each state has a key
-- State is a `dedicated` if only one transaction can own the state key. Dedicated state keeps owner
-- State is `shared` if few transactions can be applied. Shared states must manage lists of applied transactions.
+- State is a `dedicated` if only one transaction can own the state key. Dedicated states keep owner
+- State is `shared` if few transactions can be applied. Shared states must keep list of all applied transactions
 
 Example: customer must have unique email 
 - Two states are needed to handle this requirement
 - `Customer Email` is a dedicated  state, has an `email` as a key and `Customer.id` as a value
 - `Customer Data` is a shared state, has `customer.id` as a key and fields as a value
-- `Create Customer` operation first try to create  `Customer Email` state, if ok, `Customer Data` is created
+- `Create Customer` reqest  first try to create  `Customer Email` state, if ok, `Customer Data` is created
