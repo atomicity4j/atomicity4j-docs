@@ -46,5 +46,5 @@ Design details:
 Example: customer must have unique email 
 - Two states are needed to handle this requirement
 - `Customer Email` is a dedicated  state, has an `email` as a key and `Customer.id` as a value
-- `Customer Data` is a shared state, has `customer.id` as a key and fields as a value
+- `Customer Data` is a shared state, has `customer.id` as a key and customer fields as a value
 - `Create Customer` reqest  first try to create  `Customer Email` state, if ok, `Customer Data` is created
