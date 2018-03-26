@@ -49,3 +49,8 @@ Example: customer must have unique email
 - `Customer Email` is a dedicated  state, has an `email` as a key and `Customer.id` as a value
 - `Customer Data` is a shared state, has `customer.id` as a key and customer fields as a value
 - `Create Customer` reqest  first try to create  `Customer Email` state, if ok, `Customer Data` is created
+
+# Special Scenarious
+
+- Sync logs
+- The prpoerties
