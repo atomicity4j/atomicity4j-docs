@@ -13,9 +13,7 @@ sequenceDiagram
   activate Request Handler
   Request Handler->>States Db: Changed Object States
   Request Handler->>States Db: Transaction State
-  opt Should we keep transaciton data in log or as states?
-      Request Handler->> Transaction Log: Transaction
-  end
+  Request Handler->> Transaction Log: Transaction
   Request Handler->>Responses Queue: Response
   deactivate Request Handler
   Responses Queue-->> Frontend: Response
@@ -33,13 +31,13 @@ sequenceDiagram
 
 # Balancer
 
-Balance incoming traffik to frontends
+Balance incoming traffic to frontends
 
 Service which uses a tool like `traefik` or `nginx`
 
 # Frotnend
 
-Save request to a queue
+Save the request to a queue
 
 - Use request fields to find a queue
 
@@ -82,11 +80,18 @@ Example: customer must have unique email
 
 Purpose: 
 - Keep processed transactions (both, "commited" and "rejected")
-- Effective rescan of processed transaction
+- Effective rescan of processed transactions
 
 `Requests Queue`, `States Db` and `Transaction Log` can be implemented as a single database table for the price of perfomace and scalability.
 
 # Special Scenarious
 
 - Sync logs
-- 
+- ??? Request id - can we use client on or always use internal id (say, queue offset)
+- Serivce call (Send email)
+
+# Misc
+
+- https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/
+- Binding keys, routing keys https://habrahabr.ru/post/201096/
+- Architecture description https://technet.microsoft.com/en-us/library/bb124225(v=exchg.65).aspx
