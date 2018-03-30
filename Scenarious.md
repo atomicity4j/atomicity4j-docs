@@ -92,6 +92,36 @@ Purpose:
 
 # Misc
 
+Java as microservices
+- https://codeburst.io/microservices-in-java-never-a7f3a2540dbb
+
+Nakadi
+- https://github.com/zalando/nakadi
+- Validates schemas - no
+
+Exactly once
+- https://segment.com/blog/exactly-once-delivery/
+- https://dzone.com/articles/kafka-clients-at-most-once-at-least-once-exactly-o
+- Kafka https://stackoverflow.com/questions/29647656/effective-strategy-to-avoid-duplicate-messages-in-apache-kafka-consumer
 - https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/
+- https://cwiki.apache.org/confluence/display/KAFKA/KIP-98+-+Exactly+Once+Delivery+and+Transactional+Messaging
+
+
 - Binding keys, routing keys https://habrahabr.ru/post/201096/
 - Architecture description https://technet.microsoft.com/en-us/library/bb124225(v=exchg.65).aspx
+
+```puml {align="center"}
+a->b
+```
+
+ ```ditaa {cmd=true args=["-E"]}
+  +--------+   +-------+    +-------+
+  |        | --+ ditaa +--> |       |
+  |  Text  |   +-------+    |diagram|
+  |Document|   |!magic!|    |       |
+  |     {d}|   |       |    |       |
+  +---+----+   +-------+    +-------+
+      :                         ^
+      |       Lots of work      |
+      +-------------------------+
+  ```
