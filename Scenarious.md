@@ -92,8 +92,10 @@ Purpose:
 
 # Misc
 
-Java as microservices
+Java for microservices
 - https://codeburst.io/microservices-in-java-never-a7f3a2540dbb
+- https://buoyant.io/2016/06/17/small-memory-jvm-techniques-for-microservice-sidecars/
+  - We found two specific techniques to be the most beneficial: turning off one of the two JIT compilers enabled by default (the “C2” compiler), and using a 32-bit, rather than a 64-bit, JVM.
 
 Nakadi
 - https://github.com/zalando/nakadi
