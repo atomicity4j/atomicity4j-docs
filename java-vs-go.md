@@ -4,7 +4,8 @@
 
 # Why Go
 
-Go сразу в корне
+- Жуткое количество файлов
+- Go сразу в корне
 
 
 https://habrahabr.ru/post/261339/
@@ -56,6 +57,7 @@ client side? server side? Как у Go с готовыми библиотеками под это дело? А таким
 
 
 # Links
+- Why we switched from Python to Go https://getstream.io/blog/switched-python-go/
 - https://codeburst.io/passing-go-for-a-second-time-a346076f3bb7
 - JavaScript https://medium.com/@johntucker_48673/really-appreciate-the-response-it-focused-my-attention-on-why-i-was-drawn-to-the-opinionatedness-86ac3fcbc5f6
 - https://medium.freecodecamp.org/here-are-some-amazing-advantages-of-go-that-you-dont-hear-much-about-1af99de3b23a
