@@ -20,8 +20,11 @@ https://habrahabr.ru/post/261339/
 
 # Why not Go
 
+- Tools versioning https://github.com/Microsoft/vscode-go/wiki/Go-tools-that-the-Go-extension-depends-on
+- I do not like Go flag, not POSIX-compatible
 - No code outline
 - Name string `json:"name,omitempty" xml:"name"`
+- Debug: not possible to fmt.Println(i)
 
 http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/
 
