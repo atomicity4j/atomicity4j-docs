@@ -20,6 +20,9 @@ https://habrahabr.ru/post/261339/
 
 # Why not Go
 
+- No code outline
+- Name string `json:"name,omitempty" xml:"name"`
+
 http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/
 
 
