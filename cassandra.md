@@ -1,0 +1,1 @@
+- https://www.datastax.com/dev/blog/advanced-time-series-data-modelling
